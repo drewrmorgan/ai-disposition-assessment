@@ -10,7 +10,9 @@ st.set_page_config(
     page_title="AI Disposition Assessment",
     page_icon="🤖",
     layout="wide"
-)st.markdown("""
+)
+
+st.markdown("""
 <style>
 
 html, body, [class*="css"] {
