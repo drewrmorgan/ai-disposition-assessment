@@ -54,10 +54,7 @@ role = st.selectbox(
     [
         "Teacher",
         "Administrator",
-        "Counselor",
-        "Instructional Coach",
         "Support Staff",
-        "Other"
     ]
 )
 
