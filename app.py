@@ -462,34 +462,34 @@ if st.button("Generate My Profile"):
     st.markdown("---")
 
     
-new_record = pd.DataFrame([{
-    "Date": datetime.now(),
-    "School": school,
-    "Persona": primary,
-    "Curiosity": dimension_scores["Curiosity"],
-    "Critical Thinking": dimension_scores["Critical Thinking"],
-    "Trust": dimension_scores["Trust"],
-    "Dependence": dimension_scores["Dependence"],
-    "Ethical Awareness": dimension_scores["Ethical Awareness"],
-    "Reflection": dimension_scores["Reflection & Agency"]
-}])
+    new_record = pd.DataFrame([{
+        "Date": datetime.now(),
+        "School": school,
+        "Persona": primary,
+        "Curiosity": dimension_scores["Curiosity"],
+        "Critical Thinking": dimension_scores["Critical Thinking"],
+        "Trust": dimension_scores["Trust"],
+        "Dependence": dimension_scores["Dependence"],
+        "Ethical Awareness": dimension_scores["Ethical Awareness"],
+        "Reflection": dimension_scores["Reflection & Agency"]
+    }])
 
-try:
-    existing = pd.read_csv("responses.csv")
+    try:
+        existing = pd.read_csv("responses.csv")
 
-    updated = pd.concat(
-        [existing, new_record],
-        ignore_index=True
+        updated = pd.concat(
+            [existing, new_record],
+            ignore_index=True
+        )
+
+    except FileNotFoundError:
+
+        updated = new_record
+
+    updated.to_csv(
+        "responses.csv",
+        index=False
     )
-
-except FileNotFoundError:
-
-    updated = new_record
-
-updated.to_csv(
-    "responses.csv",
-    index=False
-)
 
 
     pdf_file = generate_pdf(
