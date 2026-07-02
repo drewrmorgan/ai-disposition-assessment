@@ -53,7 +53,7 @@ h3 {
 
 </style>
 """, unsafe_allow_html=True)
-def generate_pdf(primary, secondary, dimension_scores):
+def generate_pdf(participant_name, primary, secondary, dimension_scores):
 
     buffer = io.BytesIO()
 
@@ -67,6 +67,16 @@ def generate_pdf(primary, secondary, dimension_scores):
     )
 
     content.append(Spacer(1, 12))
+
+    if participant_name:
+        content.append(
+            paragraph(
+                f"<b>Name:</b> (participant_name)",
+                styles['BodyText']
+            )
+        )
+
+        content.append (Spacer(1,12))
 
     content.append(
         Paragraph(f"<b>Primary Persona:</b> {primary}", styles['BodyText'])
@@ -421,6 +431,7 @@ if st.button("Generate My Profile"):
     st.markdown("---")
 
     pdf_file = generate_pdf(
+        participant_name,
         primary,
         secondary,
         dimension_scores
