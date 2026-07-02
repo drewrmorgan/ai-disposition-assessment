@@ -4,6 +4,7 @@ import plotly.graph_objects as go
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
+from datetime import datetime
 import io
 
 st.set_page_config(
@@ -459,6 +460,19 @@ if st.button("Generate My Profile"):
         )
 
     st.markdown("---")
+
+    
+    new_record = pd.DataFrame([{
+        "Date": datetime.now(),
+        "School": school,
+        "Persona": primary,
+        "Curiosity": dimension_scores["Curiosity"],
+        "Critical Thinking": dimension_scores["Critical Thinking"],
+        "Trust": dimension_scores["Trust"],
+        "Dependence": dimension_scores["Dependence"],
+        "Ethical Awareness": dimension_scores["Ethical Awareness"],
+        "Reflection": dimension_scores["Reflection & Agency"]
+    }])
 
     pdf_file = generate_pdf(
         participant_name,
