@@ -403,7 +403,8 @@ if st.button("Generate My Profile"):
         )
 
     st.markdown("---")
-    pdf_file = generate_pdf(
+    
+pdf_file = generate_pdf(
     primary,
     secondary,
     dimension_scores
