@@ -402,19 +402,19 @@ if st.button("Generate My Profile"):
             "What might AI contribute as a thought partner without replacing your judgment?"
         )
 
-    st.markdown("---")
-    
-pdf_file = generate_pdf(
-    primary,
-    secondary,
-    dimension_scores
-)
+st.markdown("---")
 
-st.download_button(
-    label="📄 Download My Report",
-    data=pdf_file,
-    file_name="AI_Disposition_Report.pdf",
-    mime="application/pdf"
-)
+    pdf_file = generate_pdf(
+        primary,
+        secondary,
+        dimension_scores
+    )
 
-st.caption("AI Disposition Assessment v1.0")
+    st.download_button(
+        label="📄 Download My Report",
+        data=pdf_file,
+        file_name="AI_Disposition_Report.pdf",
+        mime="application/pdf"
+    )
+
+    st.caption("AI Disposition Assessment v1.0")
