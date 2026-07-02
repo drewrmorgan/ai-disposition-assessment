@@ -474,23 +474,29 @@ if st.button("Generate My Profile"):
         "Reflection": dimension_scores["Reflection & Agency"]
     }])
 
-    try:
-        existing = pd.read_csv("responses.csv")
+  excel_file = "AI_Disposition_Responses.xlsx"
 
-        updated = pd.concat(
-            [existing, new_record],
-            ignore_index=True
-        )
+try:
 
-    except FileNotFoundError:
-
-        updated = new_record
-
-    updated.to_csv(
-        "responses.csv",
-        index=False
+    existing = pd.read_excel(
+        excel_file,
+        engine="openpyxl"
     )
 
+    updated = pd.concat(
+        [existing, new_record],
+        ignore_index=True
+    )
+
+except Exception:
+
+    updated = new_record
+
+updated.to_excel(
+    excel_file,
+    index=False,
+    engine="openpyxl"
+)
 
     pdf_file = generate_pdf(
         participant_name,
