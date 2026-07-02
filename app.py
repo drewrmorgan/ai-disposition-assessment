@@ -70,7 +70,7 @@ def generate_pdf(participant_name, primary, secondary, dimension_scores):
 
     if participant_name:
         content.append(
-            paragraph(
+            Paragraph(
                 f"<b>Name:</b> (participant_name)",
                 styles['BodyText']
             )
