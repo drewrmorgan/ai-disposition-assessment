@@ -12,6 +12,22 @@ st.set_page_config(
     layout="wide"
 )
 
+st.title("🤖 AI Disposition Assessment")
+
+st.markdown("""
+This assessment is designed to help you reflect on your attitudes,
+habits, and beliefs regarding AI.
+""")
+
+participant_name = st.text_input(
+    "Name for PDF Report (Optional)"
+)
+
+st.info(
+    "Your name will only be included in your personal PDF report. "
+    "It will not be stored with assessment results."
+)
+
 st.markdown("""
 <style>
 
