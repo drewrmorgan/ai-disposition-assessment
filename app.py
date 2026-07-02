@@ -402,7 +402,7 @@ if st.button("Generate My Profile"):
             "What might AI contribute as a thought partner without replacing your judgment?"
         )
 
-st.markdown("---")
+    st.markdown("---")
 
     pdf_file = generate_pdf(
         primary,
