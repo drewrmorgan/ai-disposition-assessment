@@ -1,13 +1,82 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet
+import io
 
 st.set_page_config(
     page_title="AI Disposition Assessment",
     page_icon="🤖",
     layout="wide"
-)
+)st.markdown("""
+<style>
 
+html, body, [class*="css"] {
+    font-size: 20px;
+}
+
+p, div, label {
+    font-size: 20px !important;
+}
+
+h1 {
+    font-size: 40px !important;
+}
+
+h2 {
+    font-size: 32px !important;
+}
+
+h3 {
+    font-size: 28px !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
+def generate_pdf(primary, secondary, dimension_scores):
+
+    buffer = io.BytesIO()
+
+    doc = SimpleDocTemplate(buffer, pagesize=letter)
+    styles = getSampleStyleSheet()
+
+    content = []
+
+    content.append(
+        Paragraph("AI Disposition Assessment Report", styles['Title'])
+    )
+
+    content.append(Spacer(1, 12))
+
+    content.append(
+        Paragraph(f"<b>Primary Persona:</b> {primary}", styles['BodyText'])
+    )
+
+    content.append(
+        Paragraph(f"<b>Secondary Persona:</b> {secondary}", styles['BodyText'])
+    )
+
+    content.append(Spacer(1, 12))
+
+    content.append(
+        Paragraph("Disposition Scores", styles['Heading2'])
+    )
+
+    for dimension, score in dimension_scores.items():
+        content.append(
+            Paragraph(
+                f"{dimension}: {score}%",
+                styles['BodyText']
+            )
+        )
+
+    doc.build(content)
+
+    buffer.seek(0)
+
+    return buffer
 # ----------------------------------
 # PERSONAS
 # ----------------------------------
@@ -332,4 +401,16 @@ if st.button("Generate My Profile"):
         )
 
     st.markdown("---")
+    pdf_file = generate_pdf(
+    primary,
+    secondary,
+    dimension_scores
+)
+
+st.download_button(
+    label="📄 Download My Report",
+    data=pdf_file,
+    file_name="AI_Disposition_Report.pdf",
+    mime="application/pdf"
+)
     st.caption("AI Disposition Assessment v1.0")
