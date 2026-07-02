@@ -512,4 +512,4 @@ st.download_button(
     mime="application/pdf"
 )
 
-    st.caption("AI Disposition Assessment v1.0")
+st.caption("AI Disposition Assessment v1.0")
