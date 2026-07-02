@@ -28,6 +28,33 @@ st.info(
     "It will not be stored with assessment results."
 )
 
+school = st.selectbox(
+    "School",
+    [
+        "Auburn Early Education Center",
+        "Dean Road Elementary",
+        "Ogletree Elementary",
+        "Pick Elementary",
+        "Richland Elementary",
+        "Wrights Mill Road Elementary",
+        "Auburn Junior High",
+        "Auburn High School",
+        "Central Office"
+    ]
+)
+
+role = st.selectbox(
+    "Role",
+    [
+        "Teacher",
+        "Administrator",
+        "Counselor",
+        "Instructional Coach",
+        "Support Staff",
+        "Other"
+    ]
+)
+
 st.markdown("""
 <style>
 
