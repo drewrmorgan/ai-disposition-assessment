@@ -5,7 +5,10 @@ st.title("AI Dispositions Dashboard")
 
 try:
 
-    df = pd.read_csv("responses.csv")
+    df = pd.read_excel(
+    "AI_Disposition_Responses.xlsx",
+    engine="openpyxl"
+)
 
     st.write(df)
 
