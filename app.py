@@ -431,18 +431,18 @@ if st.button("Generate My Profile"):
 
     st.markdown("---")
 
-pdf_file = generate_pdf(
-    participant_name,
-    primary,
-    secondary,
-    dimension_scores
-)
+    pdf_file = generate_pdf(
+        participant_name,
+        primary,
+        secondary,
+        dimension_scores
+    )
 
-st.download_button(
-    label="📄 Download My Report",
-    data=pdf_file,
-    file_name="AI_Disposition_Report.pdf",
-    mime="application/pdf"
-)
+    st.download_button(
+        label="📄 Download My Report",
+        data=pdf_file,
+        file_name="AI_Disposition_Report.pdf",
+        mime="application/pdf"
+    )
 
-st.caption("AI Disposition Assessment v1.0")
+    st.caption("AI Disposition Assessment v1.0")
