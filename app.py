@@ -431,43 +431,6 @@ if st.button("Generate My Profile"):
 
     st.markdown("---")
 
-    
-    new_record = pd.DataFrame([{
-        "Date": datetime.now(),
-        "School": school,
-        "Persona": primary,
-        "Curiosity": dimension_scores["Curiosity"],
-        "Critical Thinking": dimension_scores["Critical Thinking"],
-        "Trust": dimension_scores["Trust"],
-        "Dependence": dimension_scores["Dependence"],
-        "Ethical Awareness": dimension_scores["Ethical Awareness"],
-        "Reflection": dimension_scores["Reflection & Agency"]
-    }])
-
-excel_file = "AI_Disposition_Responses.xlsx"
-
-try:
-
-    existing = pd.read_excel(
-        excel_file,
-        engine="openpyxl"
-    )
-
-    updated = pd.concat(
-        [existing, new_record],
-        ignore_index=True
-    )
-
-except Exception:
-
-    updated = new_record
-
-updated.to_excel(
-    excel_file,
-    index=False,
-    engine="openpyxl"
-)
-
 pdf_file = generate_pdf(
     participant_name,
     primary,
