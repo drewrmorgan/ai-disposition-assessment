@@ -460,7 +460,7 @@ try:
 
 except Exception:
 
-    updated = new_record
+updated = new_record
 
 updated.to_excel(
     excel_file,
