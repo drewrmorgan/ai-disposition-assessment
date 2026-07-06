@@ -13,7 +13,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🤖 AI Disposition Assessment")
+st.title("🤖 ACS AI Disposition Assessment")
 
 st.markdown("""
 This assessment is designed to help you reflect on your attitudes,
